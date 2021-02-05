@@ -11,6 +11,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { SuscribeFormComponent } from './components/suscribe-form/suscribe-form.component';
 import { SuscribeService } from './services/suscribe.service';
+import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+import { FooterAdminComponent } from './components/footer-admin/footer-admin.component';
+import { SharedModule as PrimeSharedModule } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,17 @@ import { SuscribeService } from './services/suscribe.service';
     FooterComponent,
     LayoutComponent,
     LayoutAdminComponent,
-    SuscribeFormComponent
+    SuscribeFormComponent,
+    HeaderAdminComponent,
+    FooterAdminComponent
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    PrimeSharedModule,
+    MenubarModule,
   ],
   providers: [
     SuscribeService, // {provide: SuscribeService, useClass: SuscribeService}
