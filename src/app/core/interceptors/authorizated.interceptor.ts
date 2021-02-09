@@ -7,7 +7,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { StorageAuthService } from 'src/app/shared/services/storage-auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -21,26 +21,26 @@ export class AuthorizatedInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // Moficando el request de una peticion http
+    // Modificando el request de una peticion http
     const newRequest = request.clone({
       setHeaders: {
         Authorization: this.getToken()
       }
     });
 
-    // Modificando el respone de una peticion http
+    // modificando el response de una peticion http
     const response = next.handle(newRequest).pipe(
       // tap(res => console.log(`response observable interceptor`, res))
-      tap(
+      tap( 
         () => {},
         error => {
-          if (error.status === 401){
+          if (error.status === 401) {
             this.router.navigate([this.loginUrl]);
           }
         }
-        )
-    );
-
+      )
+    )
+    
     return response;
   }
 
